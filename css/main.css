@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --font-family-main: "Roboto", sans-serif;
   --font-family-logo: "Raleway", sans-serif;
@@ -71,28 +72,26 @@ body {
   border: 0;
   padding: 0;
   white-space: nowrap;
-  clip-path: inset(100%);
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
 
 /* Хедер */
-
 .header {
   background-color: var(--body-main-color);
   border-bottom: 1px solid #ececec;
 }
 
-a.current {
+.header__link.header__link_current {
   color: var(--logo-main-color);
 }
-
-.link:hover,
-.link:focus {
-  color: var(--logo-main-color);
+.header__link.header__link_current::after {
+  opacity: 1;
 }
 
-.header-logo {
+.logo {
   color: var(--logo-secondary-color);
   font-family: var(--font-family-logo);
   font-weight: 700;
@@ -101,28 +100,27 @@ a.current {
   letter-spacing: 0.03em;
   margin-right: 93px;
 }
-
-.logo-icon {
+.logo__icon {
   color: var(--logo-main-color);
 }
 
-.head-wrapper {
+.header__wrapper {
   display: flex;
 }
 
-.header-nav {
+.header__nav {
   display: flex;
   align-items: center;
   justify-content: flex-start;
 }
 
-.header-list {
+.header__list {
   display: flex;
   justify-content: center;
   gap: 50px;
 }
 
-.header-link {
+.header__link {
   position: relative;
   font-family: var(--font-family-main);
   font-weight: 500;
@@ -133,8 +131,7 @@ a.current {
   color: var(--secondary-text-color);
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.header-link::after {
+.header__link::after {
   display: block;
   position: absolute;
   left: 0;
@@ -147,12 +144,11 @@ a.current {
   border-radius: 2px;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.header-link.current::after {
-  opacity: 1;
+.header__link:hover, .header__link:focus {
+  color: var(--logo-main-color);
 }
 
-.contact-link {
+.contact__link {
   font-family: var(--font-family-main);
   font-weight: 500;
   line-height: 1.14;
@@ -162,42 +158,41 @@ a.current {
   display: flex;
   gap: 10px;
 }
+.contact__link:hover, .contact__link:focus {
+  color: var(--logo-main-color);
+}
 
-.contact-list {
+.contact__list {
   list-style: none;
   display: flex;
   align-items: center;
   margin-left: auto;
 }
 
-.contact-item:not(:last-child) {
+.contact__item:not(:last-child) {
   margin-right: 30px;
 }
 
-.contact-icon {
+.contact__icon {
   fill: currentColor;
 }
 
-/* Герой */
-
 .hero {
+  max-width: 1600px;
+  height: 600px;
   color: var(--body-main-color);
-  /* background-color: var(--body-secondary-color); */
   padding-top: 200px;
   padding-bottom: 200px;
+  margin: 0 auto;
   text-align: center;
-  background-image: linear-gradient(
-      rgba(47, 48, 58, 0.4),
-      rgba(47, 48, 58, 0.4)
-    ),
-    url(../images/hero/hero-img-1.jpg);
+  background-image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)), url(../images/hero/hero-img-1.jpg);
+  background-color: var(--body-secondary-color);
   background-repeat: no-repeat;
   background-size: cover;
-  max-width: 1600px;
-  margin: 0 auto;
+  background-position: center;
 }
 
-.hero-title {
+.hero__title {
   font-weight: 900;
   font-size: 44px;
   line-height: 1.36;
@@ -208,7 +203,7 @@ a.current {
   margin: 0 auto;
 }
 
-.hero-btn {
+.hero__btn {
   font-weight: 700;
   font-size: 16px;
   line-height: 1.88;
@@ -216,7 +211,6 @@ a.current {
   letter-spacing: 0.06em;
   cursor: pointer;
   border: transparent;
-
   margin-top: 30px;
   padding: 10px 32px;
   border-radius: 4px;
@@ -225,24 +219,16 @@ a.current {
   color: var(--body-main-color);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-
-.hero-btn:hover,
-.hero-btn:focus {
+.hero__btn:hover, .hero__btn:focus {
   background-color: var(--hover-btn-color);
 }
 
 /* Блок особливості*/
-
-.specific-list {
+.specifics__list {
   display: flex;
 }
 
-.specifics {
-  padding-top: 94px;
-  padding-bottom: 94px;
-}
-
-.specifics-title {
+.specifics__title {
   font-size: 14px;
   line-height: 1.17;
   text-transform: uppercase;
@@ -250,19 +236,18 @@ a.current {
   color: var(--secondary-text-color);
 }
 
-.specifics-desc {
+.specifics__desc {
   line-height: 1.71;
 }
 
-.spicifics-item {
+.spicifics__item {
   width: 270px;
 }
-
-.spicifics-item:not(:last-child) {
+.spicifics__item:not(:last-child) {
   margin-right: 30px;
 }
 
-.specifics-icon {
+.specifics__icon {
   min-width: 270px;
   min-height: 120px;
   display: flex;
@@ -274,8 +259,11 @@ a.current {
 }
 
 /* Блок чим ми займаємось */
+.activities {
+  padding-top: 0;
+}
 
-.we-doing-title {
+.activities__title {
   font-size: 36px;
   line-height: 1.17;
   text-align: center;
@@ -283,19 +271,18 @@ a.current {
   margin-bottom: 50px;
 }
 
-.we-doing-item:not(:last-child) {
-  margin-right: 30px;
-}
-
-.we-doing-list {
+.activities__list {
   display: flex;
 }
 
-.we-doing.section {
-  padding-top: 0;
+.activities__item {
+  position: relative;
+}
+.activities__item:not(:last-child) {
+  margin-right: 30px;
 }
 
-.we-doing-text {
+.activities__text {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -311,19 +298,14 @@ a.current {
   background-color: rgba(47, 48, 58, 0.8);
 }
 
-.we-doing-item {
-  position: relative;
-}
-
 /* Наша команда */
-
 .team {
   background-color: var(--body-third-color);
   margin: 0 auto;
   max-width: 1600px;
 }
 
-.team-title {
+.team__title {
   font-size: 36px;
   line-height: 1.17;
   text-align: center;
@@ -331,7 +313,25 @@ a.current {
   margin-bottom: 50px;
 }
 
-.team-name {
+.team__list {
+  display: flex;
+}
+
+.team__item {
+  background-color: var(--body-main-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 0px 0px 4px 4px;
+}
+.team__item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.team__wrapper {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.team__name {
   font-weight: 500;
   font-size: 16px;
   line-height: 1.19;
@@ -340,72 +340,49 @@ a.current {
   margin-bottom: 10px;
 }
 
-.team-job {
+.team__job {
   font-size: 16px;
   line-height: 1.17;
   text-align: center;
   color: var(--main-text-color);
 }
 
-.team-list {
-  display: flex;
-}
-
-.team-list-member {
-  background-color: var(--body-main-color);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 0px 0px 4px 4px;
-}
-
-.team-list-member:not(:last-child) {
-  margin-right: 30px;
-}
-
-.team-wrapper {
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-.team-social {
+.social {
   display: flex;
   justify-content: center;
   margin-top: 16px;
   gap: 10px;
 }
 
-.team-social-item {
+.social__item {
   width: 44px;
   height: 44px;
   overflow: hidden;
   border-radius: 50%;
 }
 
-.team-social-link:hover,
-.team-social-link:focus {
-  color: var(--body-main-color);
-  background-color: var(--logo-main-color);
-}
-
-.team-social-link {
+.social__link {
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   color: var(--icon-color);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social__link:hover, .social__link:focus {
+  color: var(--body-main-color);
+  background-color: var(--logo-main-color);
 }
 
-.team-social-icon {
+.social__icon {
   width: 20px;
   height: 20px;
   fill: currentColor;
 }
 
 /* Клієнти */
-.clients-title {
+.clients__title {
   font-size: 36px;
   line-height: 1.17;
   text-align: center;
@@ -413,13 +390,13 @@ a.current {
   margin-bottom: 50px;
 }
 
-.clients-list {
+.clients__list {
   display: flex;
   justify-content: center;
   gap: 30px;
 }
 
-.clients-link {
+.clients__link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -428,24 +405,20 @@ a.current {
   border: 1px solid var(--icon-color);
   border-radius: 4px;
   color: var(--icon-color);
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.clients__link:hover, .clients__link:focus {
+  border-color: var(--logo-main-color);
+  color: var(--logo-main-color);
 }
 
-.clients-icon {
+.clients__icon {
   width: 106px;
   height: 60px;
   fill: currentColor;
 }
 
-.clients-link:hover,
-.clients-link:focus {
-  border-color: var(--logo-main-color);
-  color: var(--logo-main-color);
-}
-
 /* Футер */
-
 .footer {
   background-color: var(--body-secondary-color);
   padding: 60px 0;
@@ -476,7 +449,7 @@ a.current {
 }
 
 .footer-contact {
-  color: #ffffff99;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .footer-item:not(:last-child) {
@@ -574,6 +547,20 @@ a.current {
   border-color: var(--logo-main-color);
 }
 
+.footer-form-input::-moz-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-form-input:-ms-input-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.25;
+  color: rgba(255, 255, 255, 0.6);
+}
+
 .footer-form-input::placeholder {
   font-weight: 400;
   font-size: 16px;
@@ -593,7 +580,6 @@ a.current {
   line-height: 1.88;
   color: var(--body-main-color);
   background-color: var(--logo-main-color);
-  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15); */
   letter-spacing: 0.06em;
   border-radius: 4px;
   border: transparent;
@@ -618,7 +604,6 @@ a.current {
 }
 
 /* Портфоліо */
-
 .portfolio-btn {
   font-family: inherit;
   font-weight: 500;
@@ -632,17 +617,14 @@ a.current {
   padding: 6px 22px;
   border: transparent;
   min-width: 73px;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio-btn:hover,
 .portfolio-btn:focus {
   background-color: var(--logo-main-color);
   color: var(--body-main-color);
-  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
-    0px 2px 2px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
 
 .portfolio-list-item {
@@ -651,14 +633,11 @@ a.current {
 
 .portfolio-link {
   display: block;
-  /* position: relative;
-  overflow: hidden; */
 }
 
 .portfolio-link:hover,
 .portfolio-link:focus {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
-    1px 4px 6px rgba(0, 0, 0, 0.16);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -757,8 +736,7 @@ a.current {
   width: 528px;
   height: 581px;
   background-color: var(--body-main-color);
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -778,8 +756,7 @@ a.current {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   cursor: pointer;
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-close-btn:hover,
@@ -871,11 +848,6 @@ a.current {
   transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* .modal-textarea:focus-within,
-.modal-textarea:hover {
-  border-color: var(--logo-main-color);
-
-} */
 .modal-checkbox {
   position: relative;
   margin-top: 20px;
@@ -936,4 +908,4 @@ a.current {
 .modal-button:hover,
 .modal-button:focus {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-}
+}/*# sourceMappingURL=main.css.map */
