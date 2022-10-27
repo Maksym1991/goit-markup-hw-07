@@ -1,6 +1,10 @@
-/* Блок чим ми займаємось */
+
 .activities {
   padding-top: 0;
+
+  @media screen and (max-width: 1200px){
+    display: none;
+  }
 }
 
 .activities__title {
